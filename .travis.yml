@@ -14,3 +14,8 @@ after_success:
   - docker build -t raphaelmarques84/complex-nginx ./nginx
   - docker build -t raphaelmarques84/complex-server ./server
   - docker build -t raphaelmarques84/complex-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push raphaelmarques84/complex-client
+  - docker push raphaelmarques84/complex-nginx
+  - docker push raphaelmarques84/complex-server
+  - docker push raphaelmarques84/complex-worker
